@@ -40,7 +40,7 @@ lws_plat_pipe_create(struct lws *wsi)
 {
 	struct lws_context_per_thread *pt = &wsi->context->pt[(int)wsi->tsi];
 
-	return pipe(pt->dummy_pipe_fds);
+	return pipe2(pt->dummy_pipe_fds, O_NONBLOCK);
 }
 
 int
